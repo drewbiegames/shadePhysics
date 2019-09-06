@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{01BF4E2E-39E9-4E7E-B794-308EC7E06B45}</ProjectGuid>
+    <RootNamespace>ShadeEngine</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)ShadeEngine\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)ShadeEngine\library;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)ShadeEngine\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)ShadeEngine\library;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;zdll.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;glew32.lib;zdll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="BoundingShape.h" />
+    <ClInclude Include="BoundingShape3D.h" />
+    <ClInclude Include="AABB.h" />
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="Asset.h" />
+    <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="base64.h" />
+    <ClInclude Include="BaseGame.h" />
+    <ClInclude Include="BaseLevelCreator.h" />
+    <ClInclude Include="BoundingShape2D.h" />
+    <ClInclude Include="Capsule.h" />
+    <ClInclude Include="Circle.h" />
+    <ClInclude Include="ClothTest.h" />
+    <ClInclude Include="CollisionSystem.h" />
+    <ClInclude Include="Colour.h" />
+    <ClInclude Include="Defines.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="EventListener.h" />
+    <ClInclude Include="Factory.h" />
+    <ClInclude Include="FrameBuffer.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GenericEvent.h" />
+    <ClInclude Include="GLCamera.h" />
+    <ClInclude Include="GLDebugGrid.h" />
+    <ClInclude Include="GLFirstPersonCamera.h" />
+    <ClInclude Include="GLMaterial.h" />
+    <ClInclude Include="GLTexture.h" />
+    <ClInclude Include="GLThirdPersonCamera.h" />
+    <ClInclude Include="GLGame.h" />
+    <ClInclude Include="GLGameObject.h" />
+    <ClInclude Include="GLLight.h" />
+    <ClInclude Include="InputEnum.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="Layer.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelParser.h" />
+    <ClInclude Include="LineSeg.h" />
+    <ClInclude Include="Matrix2D.h" />
+    <ClInclude Include="Matrix3D.h" />
+    <ClInclude Include="Matrix4D.h" />
+    <ClInclude Include="MenuButton.h" />
+    <ClInclude Include="MenuState.h" />
+    <ClInclude Include="GLMesh.h" />
+    <ClInclude Include="MouseButtons.h" />
+    <ClInclude Include="MovingSphere.h" />
+    <ClInclude Include="OBB.h" />
+    <ClInclude Include="ObjectLayer.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="Quaternion.h" />
+    <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="RigidBody.h" />
+    <ClInclude Include="SDLGame.h" />
+    <ClInclude Include="SDLGameObject.h" />
+    <ClInclude Include="GLShader.h" />
+    <ClInclude Include="SimpleCollision.h" />
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="SpriteSheet.h" />
+    <ClInclude Include="StateManager.h" />
+    <ClInclude Include="StateParser.h" />
+    <ClInclude Include="SweepAndPruneSystem.h" />
+    <ClInclude Include="TestState.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="TextBox.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureQuad.h" />
+    <ClInclude Include="TileLayer.h" />
+    <ClInclude Include="Tileset.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="tinystr.h" />
+    <ClInclude Include="tinyxml.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="UIEventPoller.h" />
+    <ClInclude Include="UIManager.h" />
+    <ClInclude Include="Uncopyable.h" />
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="Vector3D.h" />
+    <ClInclude Include="Vector4D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AABB.cpp" />
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="base64.cpp" />
+    <ClCompile Include="BoundingShape.cpp" />
+    <ClCompile Include="Capsule.cpp" />
+    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="ClothTest.cpp" />
+    <ClCompile Include="CollisionSystem.cpp" />
+    <ClCompile Include="Colour.cpp" />
+    <ClCompile Include="EventHandler.cpp" />
+    <ClCompile Include="EventListener.cpp" />
+    <ClCompile Include="FrameBuffer.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GLDebugGrid.cpp" />
+    <ClCompile Include="GLFirstPersonCamera.cpp" />
+    <ClCompile Include="GLGame.cpp" />
+    <ClCompile Include="GLGameObject.cpp" />
+    <ClCompile Include="GLMaterial.cpp" />
+    <ClCompile Include="GLThirdPersonCamera.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelParser.cpp" />
+    <ClCompile Include="LineSeg.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Matrix2D.cpp" />
+    <ClCompile Include="Matrix3D.cpp" />
+    <ClCompile Include="Matrix4D.cpp" />
+    <ClCompile Include="MenuButton.cpp" />
+    <ClCompile Include="GLMesh.cpp" />
+    <ClCompile Include="MovingSphere.cpp" />
+    <ClCompile Include="OBB.cpp" />
+    <ClCompile Include="ObjectLayer.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="Quaternion.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="RigidBody.cpp" />
+    <ClCompile Include="SDLGame.cpp" />
+    <ClCompile Include="SDLGameObject.cpp" />
+    <ClCompile Include="GLShader.cpp" />
+    <ClCompile Include="SimpleCollision.cpp" />
+    <ClCompile Include="GLCamera.cpp" />
+    <ClCompile Include="GLLight.cpp" />
+    <ClCompile Include="GLTexture.cpp" />
+    <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="SpriteSheet.cpp" />
+    <ClCompile Include="StateManger.cpp" />
+    <ClCompile Include="StateParser.cpp" />
+    <ClCompile Include="SweepAndPruneSystem.cpp" />
+    <ClCompile Include="TestState.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="TextBox.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureQuad.cpp" />
+    <ClCompile Include="TileLayer.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="tinystr.cpp" />
+    <ClCompile Include="tinyxml.cpp" />
+    <ClCompile Include="tinyxmlerror.cpp" />
+    <ClCompile Include="tinyxmlparser.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="UIEventPoller.cpp" />
+    <ClCompile Include="UIManager.cpp" />
+    <ClCompile Include="Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Media\test.xml">
+      <SubType>Designer</SubType>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\Shaders\burn.frag" />
+    <None Include="Media\Shaders\burn.vert" />
+    <None Include="Media\Shaders\cloth.frag" />
+    <None Include="Media\Shaders\cloth.vert" />
+    <None Include="Media\Shaders\frame.frag" />
+    <None Include="Media\Shaders\frame.vert" />
+    <None Include="Media\Shaders\frame_bw.frag" />
+    <None Include="Media\Shaders\frame_edge.frag" />
+    <None Include="Media\Shaders\frame_inv.frag" />
+    <None Include="Media\Shaders\frame_outline.frag" />
+    <None Include="Media\Shaders\frame_sobel.frag" />
+    <None Include="Media\Shaders\grid.vert" />
+    <None Include="Media\Shaders\shader.frag" />
+    <None Include="Media\Shaders\shader.vert" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

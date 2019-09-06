@@ -1,0 +1,104 @@
+<?xml version="1.0" ?>
+<States>
+  <TEST>
+    <ASSETS>
+      <gl_mesh path="Media/Obj/Quad/quad.obj" meshid="quadmesh"/>
+      <gl_mesh path="Media/Obj/Sphere/sphere.obj" meshid="spheremesh"/>
+
+      <gl_shader vertexpath="Media/Shaders/shader.vert"
+                 fragmentpath="Media/Shaders/shader.frag" id="shader"/>
+      <gl_shader vertexpath="Media/Shaders/burn.vert"
+                 fragmentpath="Media/Shaders/burn.frag" id="burn"/>
+      <gl_shader vertexpath="Media/Shaders/cloth.vert"
+                 fragmentpath="Media/Shaders/cloth.frag" id="cloth"/>
+      <gl_shader vertexpath="Media/Shaders/frame.vert" 
+                 fragmentpath="Media/Shaders/frame_edge.frag" id="frameedge"/>
+      <gl_shader vertexpath="Media/Shaders/frame.vert"
+                 fragmentpath="Media/Shaders/frame.frag" id="frame"/>
+      <gl_shader vertexpath="Media/Shaders/frame.vert"
+                 fragmentpath="Media/Shaders/frame_sobel.frag" id="framesobel"/>
+      <gl_shader vertexpath="Media/Shaders/frame.vert"
+                 fragmentpath="Media/Shaders/frame_inv.frag" id="frameinv"/>
+      <gl_shader vertexpath="Media/Shaders/frame.vert"
+                 fragmentpath="Media/Shaders/frame_bw.frag" id="framebw"/>
+
+      <gl_texture path="Media/Textures/parchment.png" textureID="burntex"/>
+      <gl_texture path="Media/Textures/cloth.png" textureID="clothtex"/>
+      <gl_texture path="Media/Textures/blank.png" textureID="blanktex"/>
+
+      <gl_light type="GLLight"
+         posX="0.0" posY="5.0" posZ="0.0" posW="1.0"
+         amb_red="1.0" amb_green="0.0" amb_blue="0.0" amb_alpha="1.0"
+         dif_red="0.0" dif_green="1.0" dif_blue="0.0" dif_alpha="1.0"
+         spc_red="1.0" spc_green="1.0" spc_blue="1.0" spc_alpha="1.0"
+         />
+      
+      <!--
+      Framebuffer Node
+      Change the shader variable to:
+            "frameedge" - for drawing outlines araound objects
+            "framesobel" - for a sobel effect
+            "frame" - for the scene as first drawn
+            "frameinv" - for inverted colours
+            "framebw" - for black and white
+      -->
+      <gl_framebuffer shader="frame" offset="200" divisor="1"/>
+      
+    </ASSETS>
+
+    <OBJECTS>
+      
+      <!-- 
+      Node for burning paper.
+      Values that can be modified:
+            pos? - position in world space
+            rot? - Euler rotation of the object
+            texture - (must load a new texture - done in ASSET tag above)
+                      to have the desired effect the texture must have 
+                      a height map in the alpha channel along with the 
+                      rgb values of the complete texture.
+            MaxTime - this is how long it will take for the paper to
+                      burn completely.
+            BurnStep - this is how large the orange and black edges are. (low values)
+      -->
+      
+      <object type="TextureQuad" size="1.0"
+             posX="0" posY="2.5" posZ="-5"
+             rotX="90" rotY="0" rotZ="0"
+             material="none" texture="burntex" 
+             mesh="quadmesh" shader="burn"
+             MaxTime="30.0" BurnStep="0.02"
+             />
+
+      <!-- 
+      Cloth Node
+      Values that can be modified: 
+            width - how many particles wide the cloth is
+            height - how many particles high the cloth is
+            seperation_??? - how far apart the spring will rest
+            strength_??? - how strong these spring are
+            wind? - wind force vector (0.01 to 0.5 in length recommended)
+      -->
+      <object type="Cloth"
+            posX="0.0" posY="0.0" posZ="0.0"
+            rotX="0" rotY="0" rotZ="0"
+            material="none" texture="clothtex" 
+            mesh="none" shader="shader"
+            width="10" height="15" 
+            seperation_struct="0.2" strength_struct="0.8"
+            seperation_shear="0.3" strength_shear="0.8"
+            seperation_bend="0.4" strengh_bend="0.9"
+            windX="0.0" windY="0.0" windZ="0.09"
+            />
+
+      <object type="FPSCamera"
+              rotX="0" rotY="-45" rotZ="0"
+              posX="-5" posY="2.5" posZ="5"
+              eyeX="0.0" eyeY="0.0" eyeZ="0.0"
+              upX="0.0"  upY="1.0"  upZ="0.0"
+              RotationSensitivity="0.5f"
+              MovementSensitivity="0.1f"
+              />
+    </OBJECTS>
+  </TEST>
+</States>
